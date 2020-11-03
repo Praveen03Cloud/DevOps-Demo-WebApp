@@ -11,23 +11,7 @@ pipeline {
   }
   agent any
   stages {
-    stage('SonarStaticCodeAnalysis') {
-      environment {
-        SCANNER_HOME = tool 'sonarqube'
-        PROJECT_NAME = "AVNCommunication"
-      }
-      steps {
-        withSonarQubeEnv('sonarserver') {
-          sh "$SCANNER_HOME/bin/sonar-scanner -Dsonar.projectKey=$PROJECT_NAME \
-        -Dsonar.sources=. \
-		-Dsonar.tests=. \
-		-Dsonar.inclusions=**/test/java/servlet/createpage_junit.java \
-		-Dsonar.test.exclusions=**/test/java/servlet/createpage_junit.java \
-		-Dsonar.login=admin \
-		-Dsonar.password=admin"
-        }
-      }
-    }
+   
     stage('Stage 2') {
       steps {
         script {
