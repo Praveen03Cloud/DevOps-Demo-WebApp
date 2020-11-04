@@ -44,13 +44,5 @@ pipeline {
     }
   }
   // Post-build actions
-  post {
-    always {
-      slackSend teamDomain: 'my-personalglobal',
-      tokenCredentialId: 'slack',
-      channel: '#alerts',
-      color: COLOR_MAP[currentBuild.currentResult],
-      message: "*${currentBuild.currentResult}:* Job ${env.JOB_NAME} build ${env.BUILD_NUMBER} \n More info at: ${env.BUILD_URL}"
-    }
-  }
+ 
 }
